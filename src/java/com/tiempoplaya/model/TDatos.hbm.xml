@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2018 9:57:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tiempoplaya.model.TDatos" table="t_datos" schema="tiempoplaya" optimistic-lock="version">
+        <comment>tabla de datos inter-relacionados</comment>
+        
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="sequence">
+                <param name="sequence">tiempoplaya.t_datos_id_seq</param>
+            </generator>
+        </id>
+        
+        <many-to-one name="TFotografias" class="com.tiempoplaya.model.TFotografias" fetch="select">
+            <column name="id_fotografia" not-null="true" />
+        </many-to-one>
+        
+        <many-to-one name="TPlayas" class="com.tiempoplaya.model.TPlayas" lazy="false" fetch="select">
+            <column name="id_playa" not-null="true" />
+        </many-to-one>
+        
+        <many-to-one name="TUsuarios" class="com.tiempoplaya.model.TUsuarios" fetch="select">
+            <column name="id_usuario" not-null="true" />
+        </many-to-one>
+        
+        <property name="coordUTMx" type="string">
+            <column name="coordUTMx" not-null="true" />
+        </property>
+        
+        <property name="coordUTMy" type="string">
+            <column name="coordUTMy" not-null="true" />
+        </property>
+        
+        <property name="coordUTMz" type="string">
+            <column name="coordUTMz" not-null="true" />
+        </property>
+        
+        <property name="viento" type="int">
+            <column name="viento" not-null="true" />
+        </property>
+        
+        <property name="oleaje" type="int">
+            <column name="oleaje" not-null="true" />
+        </property>
+        
+        <property name="nubosidad" type="int">
+            <column name="nubosidad" not-null="true" />
+        </property>
+        
+        <property name="ocupacion" type="int">
+            <column name="ocupacion" not-null="true" />
+        </property>
+        
+        <property name="limpiezaAgua" type="int">
+            <column name="limpieza_agua" not-null="true" />
+        </property>
+        
+        <property name="limpiezaArena" type="int">
+            <column name="limpieza_arena" not-null="true" />
+        </property>
+        
+        <property name="banderaMar" type="int">
+            <column name="bandera_mar" not-null="true" />
+        </property>
+        
+        <property name="medusas" type="int">
+            <column name="medusas" not-null="true" />
+        </property>
+        
+        <property name="timestamp" type="timestamp">
+                <column name="timestamp" not-null="false"/>
+        </property>
+        
+    </class>
+</hibernate-mapping>

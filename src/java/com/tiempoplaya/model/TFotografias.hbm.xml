@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2018 9:57:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tiempoplaya.model.TFotografias" table="t_fotografias" schema="tiempoplaya" optimistic-lock="version">
+        <comment>tabla de fotografias</comment>
+        
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="sequence">
+                <param name="sequence">tiempoplaya.t_fotografias_id_seq</param>
+            </generator>
+        </id>
+        
+        <many-to-one name="TPlayas" class="com.tiempoplaya.model.TPlayas" lazy="false" fetch="select">
+            <column name="id_playa" not-null="true" />
+        </many-to-one>
+        
+        <many-to-one name="TUsuarios" class="com.tiempoplaya.model.TUsuarios" lazy="false" fetch="select">
+            <column name="id_usuario" not-null="true" />
+        </many-to-one>
+        
+        <property name="BFotografia" type="binary">
+            <column name="b_fotografia" not-null="false"/>
+        </property>
+               
+        <property name="timestamp" type="timestamp">
+                <column name="timestamp" not-null="true"/>
+        </property>
+        
+        <property name="filename" type="string">
+            <column name="filename" not-null="true" />
+        </property>
+        
+        <property name="enabled" type="integer">
+            <column name="enabled" not-null="true" />
+        </property>
+        
+        <set name="TDatoses" table="t_datos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_fotografia" not-null="true" />
+            </key>
+            <one-to-many class="com.tiempoplaya.model.TDatos" />
+        </set>
+        
+    </class>
+</hibernate-mapping>

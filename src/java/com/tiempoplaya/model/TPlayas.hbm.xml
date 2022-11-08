@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2018 9:57:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tiempoplaya.model.TPlayas" table="t_playas" schema="tiempoplaya" optimistic-lock="version">
+        <comment>tabla de informaci&#195;&#179;n sobre las playas</comment>
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="sequence">
+                <param name="sequence">tiempoplaya.t_playas_id_seq</param>
+            </generator>
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" not-null="true" />
+        </property>
+        <property name="coordUTMx" type="string">
+            <column name="coordUTMx" not-null="true" />
+        </property>
+        <property name="coordUTMy" type="string">
+            <column name="coordUTMy" not-null="true" />
+        </property>
+        <property name="coordUTMz" type="string">
+            <column name="coordUTMz" not-null="true" />
+        </property>
+        <property name="utmzone" type="character">
+            <column name="utmzone" not-null="true" />
+        </property>
+        <property name="municipio" type="string">
+            <column name="municipio" not-null="true" />
+        </property>
+        <property name="cp" type="int">
+            <column name="cp" not-null="true" />
+        </property>
+        <property name="pais" type="string">
+            <column name="pais" not-null="true" />
+        </property>
+        <property name="enabled" type="int">
+            <column name="enabled" not-null="true" />
+        </property>
+        <property name="webcam" type="string">
+            <column name="webcam" not-null="false" />
+        </property>
+        <!--
+        <set name="TFotografiases" table="t_fotografias" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="id_playa" not-null="true" />
+            </key>
+            <one-to-many class="com.hopto.tiempoplaya.model.TFotografias" />
+        </set>
+        
+        <set name="TDatoses" table="t_datos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_playa" not-null="true" />
+            </key>
+            <one-to-many class="com.hopto.tiempoplaya.model.TDatos" />
+        </set> 
+       -->
+    </class>
+</hibernate-mapping>

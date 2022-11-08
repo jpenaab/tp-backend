@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2018 9:57:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tiempoplaya.model.TUsuarios" table="t_usuarios" schema="tiempoplaya" optimistic-lock="version">
+        
+        <comment>tabla de usuarios</comment>
+        
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="sequence">
+                <param name="sequence">tiempoplaya.t_usuarios_id_seq</param>
+            </generator>
+        </id>
+        
+        <property name="nombre" type="string">
+            <column name="nombre" not-null="true"/>
+        </property>
+        
+        <property name="apellidos" type="string">
+            <column name="apellidos" not-null="true"/>
+        </property>
+        
+        <property name="usuario" type="string">
+            <column name="usuario" not-null="true"/>
+        </property>
+        
+        <property name="contrasenya" type="string">
+            <column
+                name="contrasenya" not-null="true" />
+        </property>
+        
+        <property name="email" type="string">
+            <column name="email" not-null="true" />
+        </property>
+        
+        <property name="tk" type="string">
+            <column name="tk" not-null="false" />
+        </property>
+        
+        <property name="tk_timestamp" type="timestamp">
+                <column name="tk_timestamp" not-null="false"/>
+        </property>
+        
+        <property name="id_grupo" type="integer">
+            <column name="id_grupo" not-null="true"/>
+        </property>
+        
+        <property name="enabled" type="integer">
+            <column name="enabled" not-null="true"/>
+        </property>
+        
+        <set name="TFotografiases" table="t_fotografias" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="id_usuario" not-null="true" />
+            </key>
+            <one-to-many class="com.tiempoplaya.model.TFotografias" />
+        </set>
+        
+        <set name="TDatoses" table="t_datos" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="id_usuario" not-null="true" />
+            </key>
+            <one-to-many class="com.tiempoplaya.model.TDatos" />
+        </set>
+        
+    </class>
+</hibernate-mapping>
